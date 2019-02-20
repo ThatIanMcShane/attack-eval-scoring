@@ -2,7 +2,10 @@
 @ianmcshane | ian@endgame.com
 
 This repo is forked from Josh Zelonis' work around his initial blog post on 
-the MITRE ATT&CK evaluation:https://go.forrester.com/blogs/measuring-vendor-efficacy-using-the-mitre-attck-evaluation/
+the MITRE ATT&CK evaluation.
+
+To understand the context of these scripts, please see
+https://www.endgame.com/blog/executive-blog
 
 ## delayed.py
 This script counts each occurance of a delayed detection, for all vendor data in /data.
