@@ -4,28 +4,28 @@ import os
 
 # I didn't clean the data because I didn't want to modify anything,
 # irregularities in data source lead to some duplication here.
-scoring = { 'Specific Behavior':5,                                          \
-            'Specific Behavior, Tainted':5,                                 \
-            'Specific Behavior,Tainted':5,                                  \
-            'General Behavior':5,                                           \
-            'General Behavior, Tainted':5,                                  \
-            'Specific Behavior, Delayed':3,                                 \
-            'Specific Behavior,Delayed':3,                                  \
-            'General Behavior, Delayed':3,                                  \
-            'General Behavior,Delayed':3,                                   \
-            'General Behavior,Delayed,Tainted':3,                           \
-            'Enrichment':3,                                                 \
-            'Enrichment, Tainted':3,                                        \
-            'Enrichment,Tainted':3,                                         \
+scoring = { 'Specific Behavior':0,                                          \
+            'Specific Behavior, Tainted':0,                                 \
+            'Specific Behavior,Tainted':0,                                  \
+            'General Behavior':0,                                           \
+            'General Behavior, Tainted':0,                                  \
+            'Specific Behavior, Delayed':1,                                 \
+            'Specific Behavior,Delayed':1,                                  \
+            'General Behavior, Delayed':1,                                  \
+            'General Behavior,Delayed':1,                                   \
+            'General Behavior,Delayed,Tainted':1,                           \
+            'Enrichment':0,                                                 \
+            'Enrichment, Tainted':0,                                        \
+            'Enrichment,Tainted':0,                                         \
             'Enrichment, Delayed':1,                                        \
             'Enrichment, Delayed, Tainted':1,                               \
             'Enrichment,Delayed, Tainted':1,                                \
             'Enrichment,Delayed,Tainted':1,                                 \
             'Enrichment, Tainted, Delayed':1,                               \
             'Enrichment,Tainted, Delayed':1,                                \
-            'Telemetry':1,                                                  \
-            'Telemetry, Tainted':1,                                         \
-            'Telemetry,Tainted':1,                                          \
+            'Telemetry':0,                                                  \
+            'Telemetry, Tainted':0,                                         \
+            'Telemetry,Tainted':0,                                          \
             'Specific Behavior,Configuration Change':0,                     \
             'General Behavior,Configuration Change':0,                      \
             'General Behavior, Configuration Change, Delayed, Tainted':0,   \

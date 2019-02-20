@@ -1,6 +1,7 @@
 import json
 import glob
 import os
+import re
 
 # I didn't clean the data because I didn't want to modify anything,
 # irregularities in data source lead to some duplication here.
@@ -42,29 +43,22 @@ scoring = { 'Specific Behavior':5,                                          \
             'Indicator of Compromise, Delayed':0,                           \
             'None':0 }
 
-scenario = ['Initial Compromise',				\
-			'Initial Discovery',				\
-			'Privilege Escalation',				\
-			'Discovery for Lateral Movement',	\
-			'Credential Access',				\
-			'Lateral Movement',					\
-			'Persistence',						\
-			'Collection',						\
-			'Exfiltration',						\
-			'Execution of Persistence' ]
-
 def generate_score(data):
-    totalscore = {}
-    for i in range(20):
-        totalscore[i] = 0
-
+    totalscore = {0:0, 1:0, 3:0, 5:0, 'tainted':0}
     for technique in data.values():
-        for step_id, step in technique['Steps'].items():
-            id = (int(step_id.split('.',1)[0]) - 1)
+        for step in technique['Steps'].values():
+            if not len(step["Procedure"]):
+                continue
+            stepscore = 0
+            taint = 0
             for detection in step['DetectionCategories']:
                 for k,v in detection.items():
-                    if len(k.strip()) and totalscore[id] < scoring[k.strip()]: 
-                        totalscore[id] = scoring[k.strip()]
+                    if taint == 0 and scoring[k.strip()] > 0 and re.search('tainted', k.strip(), re.IGNORECASE):
+                        taint = 1
+                    if len(k.strip()) and stepscore < scoring[k.strip()]: 
+                        stepscore = scoring[k.strip()]
+            totalscore[stepscore] += 1
+            totalscore['tainted'] += taint
     return totalscore
 
 
@@ -73,12 +67,5 @@ for infile in glob.glob(os.path.join(path, '*json')):
     with open(infile) as json_data:
         data = json.load(json_data)
         score = generate_score(data)
-        print(f'{infile}')
-        print('  Cobalt Strike:')
-        for i in range(10):
-            print(f'    {scenario[i]}: {score[i]}')
-        print('  Empire:')
-        for i in range(10,20):
-            print(f'    {scenario[i%10]}: {score[i]}')
-    
-    
+        print(infile)
+        print(f'  Real-Time Alert: {score[5]}\n')
