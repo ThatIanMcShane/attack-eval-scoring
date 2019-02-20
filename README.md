@@ -15,7 +15,7 @@ There is no weighting for different types of detection with the delayed modifier
 This script counts each occurance of an enrichement or telemetry detection only, no modifiers, for all vendor data in /data.
 
 ## no_delay.py
-This script counts each occurance of an enrichement or telemetry detection only, no modifiers, for all vendor data in /data.
+This script omits all detection with a delayed modifier, for all vendor data in /data.
 
 ## real_time.py
 This script displays Forresters count of "Real Time Alerts" for all vendor data in /data..
