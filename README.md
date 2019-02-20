@@ -21,4 +21,4 @@ This script counts each occurance of an enrichement or telemetry detection only,
 This script displays Forresters count of "Real Time Alerts" for all vendor data in /data..
 
 ## what_matters.py
-This script implements weightings according to how Endgame perceives importance.  Please see THIS blogpost for more information
+This script implements weightings according to how Endgame perceives importance.  Please see (direct link to come) for more information
